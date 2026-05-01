@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+  title?: string;
+  page?: string;
+  bodyBg?: string;
+}
+
+const { title = 'Lena Han', page = '', bodyBg = '' } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Lena Han — product manager in journalism, building tools & systems for journalists." />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content="Lena Han — product manager in journalism, building tools & systems for journalists." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=fallback" rel="stylesheet" />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body style={bodyBg ? `background: ${bodyBg}` : undefined}>
+    <nav>
+      <a href="/" class="nav-name">Lena Han</a>
+      <ul class="nav-links">
+        <li><a href="/work" class={page === 'work' ? 'active' : ''}>work</a></li>
+        <li><a href="/also" class={page === 'also' ? 'active' : ''}>also</a></li>
+      </ul>
+    </nav>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

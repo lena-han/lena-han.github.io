@@ -1,0 +1,143 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Work — Lena Han" page="work" bodyBg="#d7a4fa57">
+  <div class="work-page">
+    <div class="section">
+      <h2 class="section-label">now</h2>
+      <ul class="item-list">
+        <li>
+          <span class="item-title">Product Manager</span>
+          <span class="item-meta">— [Your Organization]</span>
+          <p class="item-desc">Brief line about what you're doing there.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2 class="section-label">working on</h2>
+      <ul class="item-list">
+        <li>
+          <span class="item-title">Project or initiative name</span>
+          <p class="item-desc">One or two sentences about what it is and why it matters.</p>
+        </li>
+        <li>
+          <span class="item-title">Another thing you're building or involved in</span>
+          <p class="item-desc">Brief description.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2 class="section-label">thinking about</h2>
+      <ul class="item-list">
+        <li>How AI tools change the work of reporting</li>
+        <li>What sustainable local news looks like</li>
+        <li>Systems design for newsrooms with small teams</li>
+      </ul>
+    </div>
+
+    <p class="linkedin">You can also find me on <a href="https://www.linkedin.com/in/lena-han/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+  </div>
+</Layout>
+
+<style>
+  .work-page {
+    padding: 3rem;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.4rem;
+    max-width: 900px;
+  }
+
+  .section {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+    min-width: 160px;
+    padding-top: 0.1rem;
+    flex-shrink: 0;
+  }
+
+  .item-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .item-list li {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .item-title {
+    display: inline;
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.77rem;
+  }
+
+  .item-meta {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  .item-desc {
+    margin-top: 0.25rem;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    max-width: 600px;
+  }
+
+  .linkedin {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  .linkedin a {
+    color: var(--text-muted);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(0,0,0,0.3);
+  }
+
+  .linkedin a:hover {
+    background: #fef08a;
+    border-radius: 2px;
+    padding: 1px 3px;
+    margin: 0 -3px;
+    text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    .work-page {
+      padding: 2rem 1.5rem;
+      min-height: auto;
+      justify-content: flex-start;
+      padding-top: 2.5rem;
+    }
+
+    .section {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .section-label {
+      min-width: unset;
+    }
+  }
+</style>

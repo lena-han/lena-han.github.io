@@ -1,0 +1,284 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+
+<Layout title="Lena Han" page="home">
+  <div class="home">
+    <div class="home-inner">
+      <div class="intro">
+        <h1>Lena Han</h1>
+        <p class="tagline">Working at the intersection of journalism and technology</p>
+        <p class="bio">
+          I build tools &amp; products that help journalists reach audiences. Always thinking about building products that serve the public interest, promote good storytelling, and teach us how to be better members of our community.
+        </p>
+        <p class="email">Email me at lena.angela.han [at] gmail.com</p>
+        <div class="links">
+          <a href="/work">what I'm working on →</a>
+          <a href="/also">other things →</a>
+        </div>
+      </div>
+      <img src="/headshot.png" alt="Lena Han" class="profile-img" />
+    </div>
+
+  </div>
+
+  <!-- Background color picker -->
+  <div class="color-picker-wrap">
+    <div class="color-swatches" id="colorSwatches">
+      <button class="swatch" data-color="#faf9f7" style="background:#faf9f7" title="Default"></button>
+      <button class="swatch" data-color="#ffb8b8" style="background:#ffb8b8" title="Blush"></button>
+      <button class="swatch" data-color="#fbeea8" style="background:#fbeea8" title="Butter"></button>
+      <button class="swatch" data-color="#b4ddb0" style="background:#b4ddb0" title="Mint"></button>
+      <button class="swatch" data-color="#b3d3f8" style="background:#b3d3f8" title="Sky"></button>
+      <button class="swatch" data-color="#d4bcf3" style="background:#d4bcf3" title="Lavender"></button>
+      <button class="swatch" data-color="#ffd4b3" style="background:#ffd4b3" title="Peach"></button>
+      <button class="swatch" data-color="#f5bcdc" style="background:#f5bcdc" title="Rose"></button>
+      <button class="swatch" data-color="#a7e2db" style="background:#a7e2db" title="Aqua"></button>
+    </div>
+    <button class="color-wheel" id="colorWheelBtn" aria-label="Change background color">
+      <svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16,16 L30,16 A14,14,0,0,1,25.9,25.9 Z"   fill="#ffb8b8" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+        <path d="M16,16 L25.9,25.9 A14,14,0,0,1,16,30 Z"   fill="#fbeea8" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+        <path d="M16,16 L16,30 A14,14,0,0,1,6.1,25.9 Z"    fill="#b4ddb0" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+        <path d="M16,16 L6.1,25.9 A14,14,0,0,1,2,16 Z"     fill="#b3d3f8" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+        <path d="M16,16 L2,16 A14,14,0,0,1,6.1,6.1 Z"      fill="#d4bcf3" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+        <path d="M16,16 L6.1,6.1 A14,14,0,0,1,16,2 Z"      fill="#ffd4b3" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+        <path d="M16,16 L16,2 A14,14,0,0,1,25.9,6.1 Z"     fill="#f5bcdc" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+        <path d="M16,16 L25.9,6.1 A14,14,0,0,1,30,16 Z"    fill="#a7e2db" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+        <circle cx="16" cy="16" r="14" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+        <circle cx="16" cy="16" r="2.5" fill="#1a1a1a"/>
+      </svg>
+    </button>
+  </div>
+</Layout>
+
+<style>
+  .home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 0 3rem;
+  }
+
+  .home-inner {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    max-width: 860px;
+  }
+
+  .intro {
+    flex: 1;
+    margin-bottom: 2.5rem;
+  }
+
+  .profile-img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ── Tablet ── */
+  @media (max-width: 900px) {
+    .home-inner {
+      gap: 2.5rem;
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 640px) {
+    .home {
+      padding: 2rem 1.5rem;
+      height: auto;
+      min-height: calc(100vh - 60px);
+      justify-content: flex-start;
+      padding-top: 2.5rem;
+    }
+
+    .home-inner {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 240px;
+      border-radius: 10px;
+    }
+
+    .intro {
+      margin-bottom: 0;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+    }
+
+    .bio {
+      max-width: 100%;
+    }
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.01em;
+  }
+
+  .tagline {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .bio {
+    font-size: 0.92rem;
+    color: var(--text);
+    max-width: 460px;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .email {
+    font-size: 0.88rem;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .links a {
+    font-size: 0.85rem;
+    color: var(--text);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding-bottom: 1px;
+  }
+
+  .links a:hover {
+    text-decoration: none;
+    border-bottom-color: transparent;
+    background: #fef08a;
+    border-radius: 2px;
+    padding: 1px 3px;
+    margin: 0 -3px;
+  }
+
+  /* ── Color picker ── */
+  .color-picker-wrap {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    z-index: 100;
+  }
+
+  .color-wheel {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.2s;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .color-wheel:hover {
+    transform: rotate(30deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .color-swatches {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .color-swatches.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid #1a1a1a;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .swatch:hover {
+    transform: scale(1.25);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  @media (max-width: 640px) {
+    .color-picker-wrap {
+      display: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('colorWheelBtn');
+    var swatches = document.getElementById('colorSwatches');
+    if (!btn || !swatches) return;
+
+    // Restore saved color
+    var saved = localStorage.getItem('homeBgColor');
+    if (saved) document.body.style.background = saved;
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      swatches.classList.toggle('open');
+    });
+
+    swatches.querySelectorAll('.swatch').forEach(function (swatch) {
+      swatch.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var color = swatch.dataset.color;
+        document.body.style.transition = 'background 0.4s ease';
+        document.body.style.background = color;
+        localStorage.setItem('homeBgColor', color);
+        swatches.classList.remove('open');
+      });
+    });
+
+    document.addEventListener('click', function () {
+      swatches.classList.remove('open');
+    });
+  })();
+</script>
