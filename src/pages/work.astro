@@ -11,10 +11,10 @@ import Layout from '../layouts/Layout.astro';
           <span class="item-title">Product Manager</span>
           <span class="item-meta">— The Philadelphia Inquirer</span>
         </li>
-        <li>Building AI and workflow tools to help local and hyperlocal newsletters scale sustainably</li>
-        <li>Personalizing reading experiences in readers' inboxes and the app</li>
-        <li>Led technical migrations to Sailthru (email) and Braze (push)</li>
-        <li>Thinking through trust and community-building features with audiences</li>
+        <li class="bullet">Building AI and workflow tools to help local and hyperlocal newsletters scale sustainably</li>
+        <li class="bullet">Personalizing reading experiences in readers' inboxes and the app</li>
+        <li class="bullet">Led technical migrations to Sailthru (email) and Braze (push)</li>
+        <li class="bullet">Thinking through trust and community-building features with audiences</li>
       </ul>
     </div>
 
@@ -90,6 +90,14 @@ import Layout from '../layouts/Layout.astro';
     font-size: 0.75rem;
     color: var(--text);
     line-height: 1.5;
+  }
+
+  .item-list li.bullet::before {
+    content: '✦';
+    margin-right: 0.4rem;
+    font-size: 0.6rem;
+    vertical-align: middle;
+    opacity: 0.6;
   }
 
   .item-title {
