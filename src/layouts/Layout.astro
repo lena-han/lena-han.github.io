@@ -38,5 +38,135 @@ const { title = 'Lena Han', page = '', bodyBg = '' } = Astro.props;
     <main>
       <slot />
     </main>
+    <div class="color-picker-wrap">
+      <div class="color-swatches" id="colorSwatches">
+        <button class="swatch" data-color="#faf9f7" style="background:#faf9f7" title="Default"></button>
+        <button class="swatch" data-color="#ffb8b8" style="background:#ffb8b8" title="Blush"></button>
+        <button class="swatch" data-color="#fbeea8" style="background:#fbeea8" title="Butter"></button>
+        <button class="swatch" data-color="#b4ddb0" style="background:#b4ddb0" title="Mint"></button>
+        <button class="swatch" data-color="#b3d3f8" style="background:#b3d3f8" title="Sky"></button>
+        <button class="swatch" data-color="#d4bcf3" style="background:#d4bcf3" title="Lavender"></button>
+        <button class="swatch" data-color="#ffd4b3" style="background:#ffd4b3" title="Peach"></button>
+        <button class="swatch" data-color="#f5bcdc" style="background:#f5bcdc" title="Rose"></button>
+        <button class="swatch" data-color="#a7e2db" style="background:#a7e2db" title="Aqua"></button>
+      </div>
+      <button class="color-wheel" id="colorWheelBtn" aria-label="Change background color">
+        <svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16,16 L30,16 A14,14,0,0,1,25.9,25.9 Z"   fill="#ffb8b8" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+          <path d="M16,16 L25.9,25.9 A14,14,0,0,1,16,30 Z"   fill="#fbeea8" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+          <path d="M16,16 L16,30 A14,14,0,0,1,6.1,25.9 Z"    fill="#b4ddb0" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+          <path d="M16,16 L6.1,25.9 A14,14,0,0,1,2,16 Z"     fill="#b3d3f8" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+          <path d="M16,16 L2,16 A14,14,0,0,1,6.1,6.1 Z"      fill="#d4bcf3" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+          <path d="M16,16 L6.1,6.1 A14,14,0,0,1,16,2 Z"      fill="#ffd4b3" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+          <path d="M16,16 L16,2 A14,14,0,0,1,25.9,6.1 Z"     fill="#f5bcdc" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+          <path d="M16,16 L25.9,6.1 A14,14,0,0,1,30,16 Z"    fill="#a7e2db" stroke="#1a1a1a" stroke-width="1" stroke-linejoin="round"/>
+          <circle cx="16" cy="16" r="14" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+          <circle cx="16" cy="16" r="2.5" fill="#1a1a1a"/>
+        </svg>
+      </button>
+    </div>
   </body>
 </html>
+
+<style>
+  .color-picker-wrap {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    z-index: 100;
+  }
+
+  .color-wheel {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.2s;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .color-wheel:hover {
+    transform: rotate(30deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .color-swatches {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .color-swatches.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .swatch {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid #1a1a1a;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .swatch:hover {
+    transform: scale(1.25);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  @media (max-width: 640px) {
+    .color-picker-wrap {
+      display: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('colorWheelBtn');
+    var swatches = document.getElementById('colorSwatches');
+    if (!btn || !swatches) return;
+
+    var saved = localStorage.getItem('homeBgColor');
+    if (saved) document.body.style.background = saved;
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      swatches.classList.toggle('open');
+    });
+
+    swatches.querySelectorAll('.swatch').forEach(function (swatch) {
+      swatch.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var color = swatch.dataset.color;
+        document.body.style.transition = 'background 0.4s ease';
+        document.body.style.background = color;
+        localStorage.setItem('homeBgColor', color);
+        swatches.classList.remove('open');
+      });
+    });
+
+    document.addEventListener('click', function () {
+      swatches.classList.remove('open');
+    });
+  })();
+</script>
