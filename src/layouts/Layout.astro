@@ -136,6 +136,20 @@ const { title = 'Lena Han', page = '', bodyBg = '' } = Astro.props;
     .color-picker-wrap {
       bottom: 1.2rem;
       right: 1.2rem;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .color-swatches {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      max-width: 160px;
+      transform: translateX(8px);
+    }
+
+    .color-swatches.open {
+      transform: translateX(0);
     }
   }
 </style>
