@@ -8,14 +8,13 @@ import Layout from '../layouts/Layout.astro';
     <div class="home-inner">
       <div class="intro">
         <h1>Lena Han</h1>
-        <p class="tagline">Working at the intersection of journalism and technology</p>
         <p class="bio">
-          I build tools &amp; products that help journalists reach audiences. Always thinking about building products that serve the public interest, promote good storytelling, and teach us how to be better members of our community.
+          Product manager at The Philadelphia Inquirer. I build tools for journalists and products that connect people to information, their communities, and civic life.
         </p>
         <p class="email">Email me at lena.angela.han [at] gmail.com</p>
         <div class="links">
-          <a href="/work">what I'm working on →</a>
-          <a href="/also">other things →</a>
+          <a href="/work">work →</a>
+          <a href="/also">also →</a>
         </div>
       </div>
       <img src="/headshot.png" alt="Lena Han" class="profile-img" />
@@ -72,7 +71,7 @@ import Layout from '../layouts/Layout.astro';
       height: auto;
       min-height: calc(100vh - 60px);
       justify-content: flex-start;
-      padding-top: 2.5rem;
+      padding-top: 1.25rem;
     }
 
     .home-inner {
@@ -112,13 +111,14 @@ import Layout from '../layouts/Layout.astro';
     color: var(--text);
     margin-bottom: 1rem;
     font-weight: 500;
+    line-height: 1.35;
   }
 
   .bio {
     font-size: 0.92rem;
     color: var(--text);
     max-width: 460px;
-    line-height: 1.7;
+    line-height: 1.35;
     margin-bottom: 0.75rem;
   }
 
@@ -126,6 +126,7 @@ import Layout from '../layouts/Layout.astro';
     font-size: 0.88rem;
     color: var(--text);
     margin-bottom: 1.5rem;
+    line-height: 1.35;
   }
 
   .links {
