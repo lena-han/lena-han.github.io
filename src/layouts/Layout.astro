@@ -37,7 +37,7 @@ const { title = 'Lena Han', page = '', bodyBg = '' } = Astro.props;
     <main>
       <slot />
     </main>
-    <div class="color-picker-wrap">
+    <div class="color-picker-wrap" transition:persist>
       <div class="color-swatches" id="colorSwatches">
         <button class="swatch" data-color="#faf9f7" style="background:#faf9f7" title="Default"></button>
         <button class="swatch" data-color="#ffb8b8" style="background:#ffb8b8" title="Blush"></button>
@@ -137,36 +137,52 @@ const { title = 'Lena Han', page = '', bodyBg = '' } = Astro.props;
       bottom: 1.2rem;
       right: 1.2rem;
     }
+
+    .color-wheel {
+      width: 28px;
+      height: 28px;
+    }
+
+    .swatch {
+      width: 18px;
+      height: 18px;
+    }
   }
 </style>
 
 <script is:inline>
   (function () {
-    var btn = document.getElementById('colorWheelBtn');
-    var swatches = document.getElementById('colorSwatches');
-    if (!btn || !swatches) return;
+    function init() {
+      var btn = document.getElementById('colorWheelBtn');
+      var swatches = document.getElementById('colorSwatches');
+      if (!btn || !swatches || btn._cpInit) return;
+      btn._cpInit = true;
 
-    var saved = localStorage.getItem('homeBgColor');
-    if (saved) document.body.style.background = saved;
+      var saved = localStorage.getItem('homeBgColor');
+      if (saved) document.body.style.background = saved;
 
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      swatches.classList.toggle('open');
-    });
-
-    swatches.querySelectorAll('.swatch').forEach(function (swatch) {
-      swatch.addEventListener('click', function (e) {
+      btn.addEventListener('click', function (e) {
         e.stopPropagation();
-        var color = swatch.dataset.color;
-        document.body.style.transition = 'background 0.4s ease';
-        document.body.style.background = color;
-        localStorage.setItem('homeBgColor', color);
-        swatches.classList.remove('open');
+        swatches.classList.toggle('open');
       });
-    });
+
+      swatches.querySelectorAll('.swatch').forEach(function (swatch) {
+        swatch.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var color = swatch.dataset.color;
+          document.body.style.transition = 'background 0.4s ease';
+          document.body.style.background = color;
+          localStorage.setItem('homeBgColor', color);
+          swatches.classList.remove('open');
+        });
+      });
+    }
 
     document.addEventListener('click', function () {
-      swatches.classList.remove('open');
+      var swatches = document.getElementById('colorSwatches');
+      if (swatches) swatches.classList.remove('open');
     });
+
+    document.addEventListener('astro:page-load', init);
   })();
 </script>
