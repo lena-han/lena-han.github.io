@@ -27,7 +27,7 @@ const { title = 'Lena Han', page = '', bodyBg = '' } = Astro.props;
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body class={`page-${page || 'home'}`} style={bodyBg ? `background: ${bodyBg}` : undefined}>
+  <body style={bodyBg ? `background: ${bodyBg}` : undefined}>
     <nav>
       <a href="/" class="nav-name">Lena Han</a>
       <ul class="nav-links">
