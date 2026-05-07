@@ -28,6 +28,12 @@ html, body {
     height: auto;
   }
 
+  html:has(body.page-home),
+  body.page-home {
+    overflow: hidden;
+    height: 100%;
+  }
+
   nav {
     padding: 0.6rem 0;
   }
