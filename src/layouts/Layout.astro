@@ -13,6 +13,15 @@ const { title = 'Lena Han', page = '', bodyBg = '' } = Astro.props;
 
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GX56GLWH72"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GX56GLWH72');
+    </script>
     <meta charset="utf-8" />
     <meta name="google-site-verification" content="k6L9wps9W5cNvc9OxuqI-tUKUBKd-RTTOfjt5WYsh90" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
