@@ -6,9 +6,10 @@ interface Props {
   title?: string;
   page?: string;
   bodyBg?: string;
+  scrollable?: boolean;
 }
 
-const { title = 'Lena Han', page = '', bodyBg = '' } = Astro.props;
+const { title = 'Lena Han', page = '', bodyBg = '', scrollable = false } = Astro.props;
 ---
 
 <html lang="en">
@@ -45,7 +46,7 @@ const { title = 'Lena Han', page = '', bodyBg = '' } = Astro.props;
         <li><a href="/also" class={page === 'also' ? 'active' : ''}>also</a></li>
       </ul>
     </nav>
-    <main>
+    <main class={scrollable ? 'scrollable' : ''}>
       <slot />
     </main>
     <div class="color-picker-wrap" transition:persist>
@@ -79,6 +80,10 @@ const { title = 'Lena Han', page = '', bodyBg = '' } = Astro.props;
 </html>
 
 <style>
+  main.scrollable {
+    overflow-y: auto;
+  }
+
   .color-picker-wrap {
     position: fixed;
     bottom: 2rem;
